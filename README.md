@@ -39,5 +39,4 @@ The header file is located in the directory:
 
 If you have any questions or criticisms, feel free to contact me at:
 
-@[email](fabiolucas.carneiro@gmail.com)
 @[instagram](https://www.instagram.com/fabiocfabini/)
