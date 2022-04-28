@@ -1,0 +1,12 @@
+# Directories to ignore
+*Env*
+*Data*
+
+# python
+*__*
+*.ipynb
+
+# c
+*.vscode*
+*bin*
+*build*
