@@ -8,7 +8,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 
-#include "../headers/Paths.h"
+#include "../includes/Paths.h"
 
 void remove_extension(char* filename_no_extension, const char* filename){
     const char* aux = filename;

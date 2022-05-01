@@ -21,6 +21,7 @@ typedef struct _Node{
     struct _Node* dest;
 }Node, *Adj, **Graph;
 
+
 //! Functions
 //* init from txt file
 /**
@@ -132,5 +133,35 @@ int remove_node_by_weight(Adj* a, int weight);
  * @param dest The dest
  */
 int remove_node_by_dest(Adj* a, Adj dest);
+
+//! Algorithms
+
+//* Search algorithms
+/**
+ * @brief Depth-first search
+ * 
+ * @param g The graph
+ * @param NV Number of vertices
+ * @param origin The start vertice
+ * @param distance Array with the distance of all other nodes to origin
+ * @param tree Array with the tree of the search
+ * 
+ * @return int: The number of vertices visited
+ */
+int depth_first_search(Graph g, int NV, int origin, int distance[], int tree[]);
+int dfsRec(Graph g, int origin, int distance[], int tree[]);
+
+/**
+ * @brief Breadth-first search
+ * 
+ * @param g The graph
+ * @param NV Number of vertices
+ * @param origin The start vertice
+ * @param distance Array with the distance of all other nodes to origin
+ * @param tree Array with the tree of the search
+ * 
+ * @return int: The number of vertices visited
+ */
+int breadth_first_search(Graph g, int NV, int origin, int distance[], int tree[]);
 
 #endif

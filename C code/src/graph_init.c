@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <linux/limits.h>
-#include "../headers/Graph.h"
-#include "../headers/Paths.h"
+#include "../includes/Graph.h"
+#include "../includes/Paths.h"
 
 MGraph build_mgraph(const char* graph_name, int* NV){
     char graph_file_path[PATH_MAX + 1];

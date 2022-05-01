@@ -31,12 +31,12 @@ To compile and run the C code, type the following in the terminal:
 
 ```make && bin/main```
 
-The header file is located in the directory:
+The header files are located in the directory:
 
-```headers/```
+```includes/```
 
 ## More Information
 
 If you have any questions or criticisms, feel free to contact me at:
 
-@[instagram](https://www.instagram.com/fabiocfabini/)
+@[instagram](https://www.instagram.com/fabiocfabini/)cd

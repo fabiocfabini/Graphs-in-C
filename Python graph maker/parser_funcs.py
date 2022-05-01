@@ -52,21 +52,22 @@ def format_data_to_txt(data):
     return graph_txt[:-1]
 
 
-def format_data_to_gv(graph_name, data):
+def format_data_to_gv(graph_name, data, type):
     """format data to .gv file
     Args:
         NV (int): Number of Nodes in the graph
         graph_name (string): Name of the graph
         data (list): element format -> (int NV, list [(int connection, int weight)])
     """
-    max_node = max(map(lambda x: x[0], data))
-    print(max_node)
-    graph_dot = f"Digraph {graph_name}" + "{"
+    graph_dot = f"{type} {graph_name}" + "{"
+    sep = " "
+    if type == "Digraph": sep += "->"
+    else: sep += "--"
 
     for node_data in data:
         line = ""
         for node_connection, weight in node_data[1]:
-            line += f"\n\t{node_data[0]} -> {node_connection} [label = {weight}]"
+            line += f"\n\t{node_data[0]} {sep} {node_connection} [label = {weight}]"
         graph_dot += line
 
     graph_dot += "\n}"
@@ -122,24 +123,24 @@ def node_parser(content):
 
 if __name__ == "__main__":
     SOURCE = """
-    Digraph dijkstra{
-        0 -> 1 [label = 9]
-        0 -> 2 [label = 2]
-        0 -> 3 [label = 1]
-        0 -> 4 [label = 3]
-        1 -> 4 [label = 9]
-        1 -> 3 [label = 1]
-        1 -> 2 [label = 2]
-        1 -> 1 [label = 3]
-        2 -> 1 [label = 1]
-        2 -> 2 [label = 1]
-        3 -> 3 [label = 5]
-        3 -> 2 [label = 1]
-        4 -> 4 [label = 1]
-        4 -> 3 [label = 1]
-        4 -> 2 [label = 1]
-        4 -> 1 [label = 1]
-        4 -> 0 [label = 1]
+    Graph dijkstra{
+        0 -- 1 [label = 9]
+        0 -- 2 [label = 2]
+        0 -- 3 [label = 1]
+        0 -- 4 [label = 3]
+        1 -- 4 [label = 9]
+        1 -- 3 [label = 1]
+        1 -- 2 [label = 2]
+        1 -- 1 [label = 3]
+        2 -- 1 [label = 1]
+        2 -- 2 [label = 1]
+        3 -- 3 [label = 5]
+        3 -- 2 [label = 1]
+        4 -- 4 [label = 1]
+        4 -- 3 [label = 1]
+        4 -- 2 [label = 1]
+        4 -- 1 [label = 1]
+        4 -- 0 [label = 1]
     }
     """
     SRC = Source(SOURCE, filename="test", format="png", engine="circo")

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../headers/Graph.h"
+#include "../includes/Graph.h"
 
 //* free functions
 void free_graph(Graph g, int NV){

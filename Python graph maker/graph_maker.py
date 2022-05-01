@@ -78,6 +78,13 @@ def select_item(event):
     weights_entry.insert(END, weights)
 
 
+def radio_change():
+    """
+    Changes the graph type
+    """
+    send_data(terminate=False)
+
+
 def send_data(terminate=True):
     """
     Parses graph data and sends it to the graph contructor.
@@ -85,8 +92,9 @@ def send_data(terminate=True):
     (*data,) = nodes_list.get(0, END)
 
     data = list(map(node_parser, data))
+    type = "Digraph" if radio_var.get() == 0 else "Graph"
 
-    graph_dot = format_data_to_gv(graph_name, data)
+    graph_dot = format_data_to_gv(graph_name, data, type)
     graph_txt = format_data_to_txt(data)
     graph_path = save_graph(graph_name, graph_dot, graph_txt)
 
@@ -281,7 +289,7 @@ def master_window():
     """
     Main Window.
     """
-    global master, entries, buttons, radios, nodes_list, row, img_label
+    global master, entries, buttons, radio_var, nodes_list, row, img_label
 
     master = Tk()
     master.resizable(False, False)
@@ -330,8 +338,6 @@ def master_window():
         btn.pack(side=LEFT, padx=5, pady=5)
         buttons[field[0]] = btn
 
-    # TODO: Upon clicking add_node, update_selected or delete_selected grab current radio button value and send it to send_data to appropriately update the graph.
-
     # Creating Radio Buttons
     radios = {}
     radio_var = IntVar()
@@ -345,6 +351,7 @@ def master_window():
             font=FONT,
             value=index,
             variable=radio_var,
+            command=radio_change,
         )
         rad.pack(side=LEFT, padx=5, pady=5)
         radios[field] = rad
