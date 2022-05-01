@@ -5,10 +5,10 @@
 #define I(row, col, NV) (row*NV + col)
 
 //! Color constants
-#define ANSI_COLOR_RED     "\x1b[31m" // Not visited nodes
-#define ANSI_COLOR_GREEN   "\x1b[32m" // Fully visited nodes
-#define ANSI_COLOR_YELLOW  "\x1b[33m" // Currently visited nodes
-#define ANSI_COLOR_RESET   "\x1b[0m"  // Reset the color to white
+#define RED     "\x1b[31m" // Not visited nodes
+#define GREEN   "\x1b[32m" // Fully visited nodes
+#define YELLOW  "\x1b[33m" // Currently visited nodes
+#define RESET   "\x1b[0m"  // Reset the color to white
 
 //! Structs
 typedef char Color[10];
