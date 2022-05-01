@@ -33,7 +33,7 @@ To compile and run the C code, type the following in the terminal:
 
 The header files are located in the directory:
 
-```includes/```
+```C code/includes/```
 
 ## More Information
 
