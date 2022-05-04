@@ -52,7 +52,7 @@ int breadth_first_search(Graph g, int origin, int distance[], int tree[]){
                 tree[aux->vertice] = current_node;
 
                 // update its distance (assuming only weights of 1) 
-                distance[aux->vertice] = 1 + distance[current_node];
+                distance[aux->vertice] = aux->weight + distance[current_node];
             }
         }
     }
