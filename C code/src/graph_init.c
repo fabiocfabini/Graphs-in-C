@@ -8,7 +8,7 @@
 MGraph build_mgraph(const char* graph_name, int* NV){
     char graph_file_path[PATH_MAX + 1];
     if(!get_graph_file_path(graph_file_path, graph_name)){
-        printf("Check if the graph %s exists in \n\t[" DATA_DIRECTORY "]\n\n", graph_name);
+        printf("Graph %s does not exists in path:\n\t" DATA_DIRECTORY "\n\n", graph_name);
         return NULL;
     }
 
@@ -32,10 +32,10 @@ MGraph build_mgraph(const char* graph_name, int* NV){
     return g;
 }
 
-Graph build_graph(const char* graph_name, int* NV){
+Graph build_graph(const char* graph_name){
     char graph_file_path[PATH_MAX + 1];
     if(!get_graph_file_path(graph_file_path, graph_name)){
-        printf("Check if the graph %s exists in \n\t[" DATA_DIRECTORY "]\n\n", graph_name);
+        printf("Graph %s does not exists in path:\n\t" DATA_DIRECTORY "\n\n", graph_name);
         return NULL;
     }
 
@@ -46,21 +46,22 @@ Graph build_graph(const char* graph_name, int* NV){
         return NULL;
     }
 
-    fscanf(f, "%d ", NV);
+    int NV;
+    fscanf(f, "%d ", &NV);
 
     int weight;
-    Adj aux;
-    Graph g = malloc(sizeof(Adj) * (*NV));
-    for(int row = 0; row < *NV; row++){
-        g[row] = NULL; aux = NULL;
-        for(int col = 0; col < *NV; col++){
+    Graph g = malloc(sizeof(graph));
+    g->NV = NV;
+    g->nodes = malloc(NV * sizeof(Adj));
+    g->colors = calloc(NV, sizeof(Color));
+    for(int row = 0; row < NV; row++){
+        g->nodes[row] = NULL;
+        for(int col = 0; col < NV; col++){
             fscanf(f, "%d ", &weight);
             if(weight){
-                Adj new = push_node(col, weight, aux);
-                aux = new;
+                g->nodes[row] = push_node(col, weight, g->nodes[row]);
             }
         }
-        g[row] = aux;
     }
 
     fclose(f);

@@ -4,25 +4,35 @@
 //! Macros
 #define I(row, col, NV) (row*NV + col)
 
-//! Color constants
-#define RED     "\x1b[31m" // Not visited nodes
-#define GREEN   "\x1b[32m" // Fully visited nodes
-#define YELLOW  "\x1b[33m" // Currently visited nodes
-#define RESET   "\x1b[0m"  // Reset the color to white
-
 //! Structs
-typedef char Color[10];
+typedef enum _Color{
+    RED,
+    YELLOW,
+    GREEN
+} Color;
+
+
 typedef int* MGraph;
 
 typedef struct _Node{
-    int vertice;
     int weight;
-    Color color;
+    int vertice;
     struct _Node* dest;
-}Node, *Adj, **Graph;
+}Node, *Adj;
+
+typedef struct _graph{
+    int NV;
+    Color* colors;
+    Adj* nodes;
+}graph, *Graph;
 
 
-//! Functions
+//! debug functions
+
+void set_node_color(Graph g, int vertice, char* color);
+
+
+//! Genreral Functions
 //* init from txt file
 /**
  * @brief Builds a Matrix graph from a text file
@@ -37,10 +47,9 @@ MGraph build_mgraph(const char* graph_name, int* NV);
  * @brief Builds a List graph from a text file
  * 
  * @param graph_name Name of the graph file
- * @param NV Number of vertices
  * @return Graph The graph
  */
-Graph build_graph(const char* graph_name, int* NV);
+Graph build_graph(const char* graph_name);
 
 //* free functions
 /**
@@ -49,7 +58,7 @@ Graph build_graph(const char* graph_name, int* NV);
  * @param g The graph
  * @param NV Number of vertices
  */
-void free_graph(Graph g, int NV);
+void free_graph(Graph g);
 
 /**
  * @brief Frees the memory allocated for a adjancency list
@@ -64,9 +73,8 @@ void free_adj(Adj a);
  * @brief Prints a graph
  * 
  * @param g The graph
- * @param NV Number of vertices
  */
-void display_graph(Graph g, int NV);
+void display_graph(Graph g);
 
 /**
  * @brief Prints a matrix graph
@@ -141,27 +149,27 @@ int remove_node_by_dest(Adj* a, Adj dest);
  * @brief Depth-first search
  * 
  * @param g The graph
- * @param NV Number of vertices
+
  * @param origin The start vertice
  * @param distance Array with the distance of all other nodes to origin
  * @param tree Array with the tree of the search
  * 
  * @return int: The number of vertices visited
  */
-int depth_first_search(Graph g, int NV, int origin, int distance[], int tree[]);
+int depth_first_search(Graph g, int origin, int distance[], int tree[]);
 int dfsRec(Graph g, int origin, int distance[], int tree[]);
 
 /**
  * @brief Breadth-first search
  * 
  * @param g The graph
- * @param NV Number of vertices
+
  * @param origin The start vertice
  * @param distance Array with the distance of all other nodes to origin
  * @param tree Array with the tree of the search
  * 
  * @return int: The number of vertices visited
  */
-int breadth_first_search(Graph g, int NV, int origin, int distance[], int tree[]);
+int breadth_first_search(Graph g, int origin, int distance[], int tree[]);
 
 #endif
