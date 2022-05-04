@@ -1,6 +1,8 @@
 # Directories to ignore
 *Env*
-*Data*
+*Data/** 
+!*Data/default* 
+!*Data/default/** 
 
 # python
 *__*
@@ -10,3 +12,6 @@
 *.vscode*
 *bin*
 *build*
+
+# shell
+*.sh
