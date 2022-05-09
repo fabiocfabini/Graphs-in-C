@@ -35,6 +35,9 @@ The header files are located in the directory:
 
 ```C code/includes/```
 
+## Data
+This directory contains the information for the Default graph. 
+
 ## More Information
 
 If you have any questions or criticisms, feel free to contact me at:
