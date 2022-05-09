@@ -172,4 +172,15 @@ int dfsRec(Graph g, int origin, int distance[], int tree[]);
  */
 int breadth_first_search(Graph g, int origin, int distance[], int tree[]);
 
+/**
+ * @brief Determines if destiny is reacheble by origin in n or less steps (Assumes unwaited graph)
+ * 
+ * @param g The graph
+ * @param origin The start vertice
+ * @param destiny The desired vertice
+ * @param n The maximum number of steps
+ * @return int {0: False, 1: True}
+ */
+int n_reachable(Graph g, int origin, int destiny, int n);
+
 #endif

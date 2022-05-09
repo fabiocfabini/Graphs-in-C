@@ -60,3 +60,41 @@ int breadth_first_search(Graph g, int origin, int distance[], int tree[]){
     return count;
 }
 
+int n_reachable(Graph g, int origin, int destiny, int n){
+    //  orla           step_count                        //fringe start and end   //Checks if found 
+    int fringe[g->NV], count = 0, current_node = origin, start = 0, end = 0, found = origin == destiny;
+    // equivalent to dist
+    int steps[g->NV];
+    Adj aux;
+
+    // initialize steps array
+    for(int i = 0; i < g->NV; steps[i++] = -1);
+
+    // set default values for origin vertice
+    fringe[end++] = current_node; steps[current_node] = 0;
+    
+    // While looking and fringe not empty
+    while(!found && end > start){
+        // get next node
+        current_node = fringe[start++];
+        
+        // traverse its connections
+        for(aux = g->nodes[current_node]; aux; aux = aux->dest){
+            // if this node has not been found
+            if(steps[aux->vertice] == -1){
+                // add to fringe
+                fringe[end++] = aux->vertice;
+
+                // set the numbers of steps
+                steps[aux->vertice] = 1 + steps[current_node];
+
+                // if this is the destiny node
+                if(aux->vertice == destiny){
+                    found = 1;
+                    count = steps[destiny];
+                }
+            }
+        }
+    }
+    return (found && count <= n)? 1:0;
+}
