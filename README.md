@@ -6,7 +6,7 @@ This repository will contain some of the most popular graph algorithms. It also 
 
 This is the directory that contains the python program that allows for the creation of graphs. To run the program, simply type the following in the terminal:
 
-```pip install -r requirements.txt```
+```./run.sh```
 
 Then, type the following in the terminal:
 
@@ -34,6 +34,8 @@ To compile and run the C code, type the following in the terminal:
 The header files are located in the directory:
 
 ```C code/includes/```
+
+**Do not forget to update the path in the C code/includes/Paths.h script**
 
 ## Data
 This directory contains the information for the Default graph. 
