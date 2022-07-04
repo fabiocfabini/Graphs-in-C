@@ -1,5 +1,5 @@
 # Directories to ignore
-*Env*
+*env*
 *Data/** 
 !*Data/default* 
 !*Data/default/** 

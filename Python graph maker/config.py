@@ -5,7 +5,7 @@ Module Used To Store Variables Used by most Modules
 import os
 
 # Directory of Images, Graphs, txt ...
-DATA_DIR = "/home/fabiocfabini/Desktop/UM/AlgC/Data"
+DATA_DIR = os.getcwd() + "/Data"
 
 # Logo
 LOGO_PATH = os.path.join(DATA_DIR, "LOGO.png")
