@@ -3,7 +3,7 @@
 
 #define DEFAULT_TABLE_SIZE 10
 #define MAX_GRAPH_NAME_SIZE 50
-#define DATA_DIRECTORY "/home/fabiocfabini/Desktop/UM/AlgC/Data" //! change as needed
+#define DATA_DIRECTORY "/home/fabiocfabini/Desktop/CS/Graphs-in-C/Data" //! change as needed
 
 #ifdef _WIN32
     #define PATH_SEPARATOR "\\"

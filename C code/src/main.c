@@ -8,7 +8,7 @@
 #include "../includes/Graph.h"
 #include "../includes/Paths.h"
 
-char* graph_name = "default.txt";
+char* graph_name = "mygraph.txt";
 
 int main(int argc, char const *argv[]) {
     Graph g = build_graph(graph_name);
